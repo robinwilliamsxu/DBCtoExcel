@@ -5,6 +5,9 @@
  */
 package newpackage;
 
+import GUI.FindDBC;
+import GUI.PopMe1;
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,8 +35,29 @@ public class ReadDbc {
     /**
      * 以行为单位读取文件，常用于读面向行的格式化文件
      */
+    
+    public String   PropertyName = "";
+    public String   Property = "";
+    public String   PropertyValue = "";
+    public Desktop  desktop;
+    public String  Object;
     public static String outputFile ="C:\\Users\\doxu\\Desktop\\test.xls";
-    public static void readFileByLines(String fileName) {
+    public static String fileName ="C:\\Users\\doxu\\Desktop\\test.xls";
+    public void readFileByLines() {
+        
+        FindDBC dialog = new FindDBC(new javax.swing.JFrame(), true);
+
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        outputFile = dialog.Excelpath+dialog.ExcelName;
+        fileName=dialog.DBCpath+"\\"+dialog.DBCFileName;
+        
+        //        FileOpen2 file= new FileOpen2();
+//        
+//        String fileName = file.getCurrentDirectory().getPath()+"\\"+file.getCurrentFile().getName();
+        
+        
         FileOutputStream fOut = null;//this is for excle out flow
         File file = new File(fileName);
         BufferedReader reader = null;
@@ -92,7 +116,8 @@ public class ReadDbc {
                     for (int i = 0; i < EcuNumber; i++) 
                     {
                         ECUroot[i] = LineData[i + 1];
-                        TitleList.add(ECUroot[i].toString());                       
+                        //自动的把所有的ECU添加到标题上面。
+                        //TitleList.add(ECUroot[i].toString());                       
                     }
                 }
                 if (LineData.length >= 4 && LineData[0].equals("BO_")) 
@@ -248,12 +273,15 @@ public class ReadDbc {
 
 
     public static void main(String[] args) {
+//   以下代码可以在程序中打开打开窗口
 //        FileOpen2 file= new FileOpen2();
 //        
 //        String fileName = file.getCurrentDirectory().getPath()+"\\"+file.getCurrentFile().getName();
-        String fileName = "C:\\Users\\doxu\\Desktop\\ComfortCAN.dbc";
-        ReadDbc.readFileByLines(fileName);
-
+         
+        //String fileName = "C:\\Users\\doxu\\Desktop\\ComfortCAN.dbc";
+        //ReadDbc.readFileByLines(fileName);
+        ReadDbc a=new ReadDbc();
+        a.readFileByLines();
     }
 
     

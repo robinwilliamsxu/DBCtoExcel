@@ -27,9 +27,9 @@ public class FileOpen2{
         fileChooser.setAcceptAllFileFilterUsed(false);
         final String[][] fileENames = 
                 {   
-                    { ".java", "JAVA源程序 文件(*.java)" },
-                    { ".doc", "MS-Word 2003 文件(*.doc)" },
-                    { ".xls", "MS-Excel 2003 文件(*.xls)" },
+//                    { ".java", "JAVA源程序 文件(*.java)" },
+//                    { ".doc", "MS-Word 2003 文件(*.doc)" },
+//                    { ".xls", "MS-Excel 2003 文件(*.xls)" },
                     { ".dbc", "dbc 文件(*.dbc)" }
                  };
 
